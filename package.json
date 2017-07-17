@@ -1,6 +1,6 @@
 {
   "name": "brain-games-fomina",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "brain-games",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,11 @@
   },
   "author": "Irina Fomina",
   "license": "ISC",
+  "dependencies" : {
+    "readline-sync": "*"
+  },
   "devDependencies": {
-	"babel-cli": "*",
+    "babel-cli": "*",
     "babel-core": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*"
