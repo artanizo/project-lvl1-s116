@@ -1,13 +1,13 @@
 {
-  "name": "brain-games",
+  "name": "brain-games-fomina",
   "version": "0.0.1",
   "description": "brain-games",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node",
-    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline"
-    "prepublish": "nom run build"
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublish": "npm run build"
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
