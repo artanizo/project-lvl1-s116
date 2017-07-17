@@ -1,0 +1,22 @@
+{
+  "name": "brain-games",
+  "version": "0.0.1",
+  "description": "brain-games",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artanizo/project-lvl1-s116.git"
+  },
+  "author": "Irina Fomina",
+  "license": "ISC",
+  "devDependencies": {
+	"babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*"
+   }
+}
