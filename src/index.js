@@ -37,7 +37,7 @@ const checkAnswer = (playerAnswer, rightAnswer, name) => {
 const round = name => (number) => {
   const answer = askQuestion(number);
   const expectedAnswer = getRightAnswer(number);
-  return checkAnswer(answer, expectedAnswer, name);
+  return checkAnswer(answer, expectedAnswer.trim(), name);
 };
 
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
