@@ -34,11 +34,10 @@ const checkAnswer = (playerAnswer, rightAnswer, name) => {
   return false;
 };
 
-const round = (number, name) => {
+const round = name => (number) => {
   const answer = askQuestion(number);
   const expectedAnswer = getRightAnswer(number);
-  const check = checkAnswer(answer, expectedAnswer, name);
-  return check;
+  return checkAnswer(answer, expectedAnswer, name);
 };
 
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
@@ -52,13 +51,15 @@ const brainEven = () => {
   welcomeMessage('Answer "yes" if number even otherwise answer "no".');
   const name = askName();
 
-  const firstRound = round(getRandomNumber(), name);
+  const roundFunc = round(name);
+
+  const firstRound = roundFunc(getRandomNumber());
   if (!firstRound) return;
 
-  const secondRound = round(getRandomNumber(), name);
+  const secondRound = roundFunc(getRandomNumber());
   if (!secondRound) return;
 
-  const thirdRound = round(getRandomNumber(), name);
+  const thirdRound = roundFunc(getRandomNumber());
   if (!thirdRound) return;
 
   console.log(`Congratulations, ${name}!`);
