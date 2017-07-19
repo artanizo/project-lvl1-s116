@@ -1,6 +1,6 @@
 {
   "name": "brain-games-fomina",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "brain-games",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "repository": {
     "type": "git",

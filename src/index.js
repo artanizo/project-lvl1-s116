@@ -18,13 +18,13 @@ const getRightAnswer = (number) => {
   return 'no';
 };
 
-const askQuestion = (number) => {
-  console.log(`Question: ${number}`);
+const askQuestion = (expr) => {
+  console.log(`Question: ${expr}`);
   return readlineSync.question('Your answer: ');
 };
 
 const checkAnswer = (playerAnswer, rightAnswer, name) => {
-  if (playerAnswer === rightAnswer) {
+  if (playerAnswer == rightAnswer) {
     console.log('Correct!');
     return true;
   }
@@ -37,7 +37,7 @@ const checkAnswer = (playerAnswer, rightAnswer, name) => {
 const round = name => (number) => {
   const answer = askQuestion(number);
   const expectedAnswer = getRightAnswer(number);
-  return checkAnswer(answer, expectedAnswer.trim(), name);
+  return checkAnswer(answer.trim(), expectedAnswer, name);
 };
 
 const getRandomNumber = () => Math.floor((Math.random() * 100) + 1);
@@ -65,5 +65,41 @@ const brainEven = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
+const getRandomOperator = () => {
+  const OPERATORS = ['+', '-', '*'];
+  return OPERATORS[Math.floor(Math.random() * OPERATORS.length)];
+};
 
-export { game, brainEven };
+const getCalcRightAnswer = (x, y, op) => {
+  if (op === '+') return x + y;
+  if (op === '-') return x - y;
+  if (op === '*') return x * y;
+  console.log(`Error: no operation ${op} was found!`);
+  return null;
+};
+
+const calcRound = name => (x, y, op) => {
+  const answer = askQuestion(`${x} ${op} ${y}`);
+  const expectedAnswer = getCalcRightAnswer(x, y, op);
+  return checkAnswer(answer.trim(), expectedAnswer, name);
+};
+
+const brainCalc = () => {
+  welcomeMessage('What is the result of the expression?');
+  const name = askName();
+
+  const roundFunc = calcRound(name);
+
+  const firstRound = roundFunc(getRandomNumber(), getRandomNumber(), getRandomOperator());
+  if (!firstRound) return;
+
+  const secondRound = roundFunc(getRandomNumber(), getRandomNumber(), getRandomOperator());
+  if (!secondRound) return;
+
+  const thirdRound = roundFunc(getRandomNumber(), getRandomNumber(), getRandomOperator());
+  if (!thirdRound) return;
+
+  console.log(`Congratulations, ${name}!`);
+};
+
+export { game, brainEven, brainCalc };
