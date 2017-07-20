@@ -1,31 +1,31 @@
-import * as utils from '../utils';
+import getRandomNumber from '../utils';
+import startGame from '../game-service';
 
-const getRightAnswer = (number) => {
+const getCorrectAnswer = (number) => {
   if (number % 2 === 0) {
     return 'yes';
   }
   return 'no';
 };
 
-const brainEven = (name) => {
-  const round = (number) => {
-    const answer = utils.askQuestion(number);
-    const expectedAnswer = getRightAnswer(number);
-    return utils.checkAnswer(answer.trim(), expectedAnswer, name);
-  };
+const game = (numberOfRounds) => {
+  const description = 'Answer "yes" if number even otherwise answer "no".';
 
-  console.log('Answer "yes" if number even otherwise answer "no".');
+  const objectives = [];
 
-  const firstRound = round(utils.getRandomNumber());
-  if (!firstRound) return;
+  let i = 0;
+  while (i < numberOfRounds) {
+    const random = getRandomNumber();
 
-  const secondRound = round(utils.getRandomNumber());
-  if (!secondRound) return;
+    const obj = new Map();
+    obj.set('question', random);
+    obj.set('correct', getCorrectAnswer(random));
 
-  const thirdRound = round(utils.getRandomNumber());
-  if (!thirdRound) return;
+    objectives.push(obj);
+    i += 1;
+  }
 
-  utils.gratsMessage(name);
+  startGame(description, objectives);
 };
 
-export default brainEven;
+export default game;

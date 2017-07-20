@@ -1,11 +1,12 @@
-import * as utils from '../utils';
+import getRandomNumber from '../utils';
+import startGame from '../game-service';
 
 const getRandomOperator = () => {
   const OPERATORS = ['+', '-', '*'];
   return OPERATORS[Math.floor(Math.random() * OPERATORS.length)];
 };
 
-const getRightAnswer = (x, y, op) => {
+const getCorrectAnswer = (x, y, op) => {
   if (op === '+') return x + y;
   if (op === '-') return x - y;
   if (op === '*') return x * y;
@@ -13,31 +14,24 @@ const getRightAnswer = (x, y, op) => {
   return null;
 };
 
-const brainCalc = (name) => {
-  const round = (x, y, op) => {
-    const answer = utils.askQuestion(`${x} ${op} ${y}`);
-    const expectedAnswer = getRightAnswer(x, y, op);
-    return utils.checkAnswer(parseInt(answer, 10), expectedAnswer, name);
-  };
+const game = (numberOfRounds) => {
+  const description = 'What is the result of the expression?';
+  const objectives = [];
+  let i = 0;
+  while (i < numberOfRounds) {
+    const x = getRandomNumber();
+    const y = getRandomNumber();
+    const op = getRandomOperator();
 
-  console.log('What is the result of the expression?');
+    const obj = new Map();
+    obj.set('question', `${x} ${op} ${y}`);
+    obj.set('correct', getCorrectAnswer(x, y, op).toString());
 
-  const firstRound = round(utils.getRandomNumber(),
-    utils.getRandomNumber(),
-    getRandomOperator());
-  if (!firstRound) return;
+    objectives.push(obj);
+    i += 1;
+  }
 
-  const secondRound = round(utils.getRandomNumber(),
-    utils.getRandomNumber(),
-    getRandomOperator());
-  if (!secondRound) return;
-
-  const thirdRound = round(utils.getRandomNumber(),
-    utils.getRandomNumber(),
-    getRandomOperator());
-  if (!thirdRound) return;
-
-  utils.gratsMessage(name);
+  startGame(description, objectives);
 };
 
-export default brainCalc;
+export default game;

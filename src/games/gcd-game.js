@@ -1,29 +1,30 @@
-import * as utils from '../utils';
+import getRandomNumber from '../utils';
+import startGame from '../game-service';
 
-const getRightAnswer = (x, y) => {
+const getCorrectAnswer = (x, y) => {
   if (!y) return x;
-  return getRightAnswer(y, x % y);
+  return getCorrectAnswer(y, x % y);
 };
 
-const brainGcd = (name) => {
-  const round = (x, y) => {
-    const answer = utils.askQuestion(`${x}  ${y}`);
-    const expectedAnswer = getRightAnswer(x, y);
-    return utils.checkAnswer(parseInt(answer, 10), expectedAnswer, name);
-  };
+const game = (numberOfRounds) => {
+  const description = 'Find the greatest common divisor of given numbers.';
 
-  console.log('Find the greatest common divisor of given numbers.');
+  const objectives = [];
 
-  const firstRound = round(utils.getRandomNumber(), utils.getRandomNumber());
-  if (!firstRound) return;
+  let i = 0;
+  while (i < numberOfRounds) {
+    const x = getRandomNumber();
+    const y = getRandomNumber();
 
-  const secondRound = round(utils.getRandomNumber(), utils.getRandomNumber());
-  if (!secondRound) return;
+    const obj = new Map();
+    obj.set('question', `${x} ${y}`);
+    obj.set('correct', getCorrectAnswer(x, y).toString());
 
-  const thirdRound = round(utils.getRandomNumber(), utils.getRandomNumber());
-  if (!thirdRound) return;
+    objectives.push(obj);
+    i += 1;
+  }
 
-  utils.gratsMessage(name);
+  startGame(description, objectives);
 };
 
-export default brainGcd;
+export default game;
