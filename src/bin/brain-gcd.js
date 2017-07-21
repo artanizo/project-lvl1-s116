@@ -2,4 +2,4 @@
 
 import game from '../games/gcd-game';
 
-game(3);
+game();

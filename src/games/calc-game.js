@@ -1,37 +1,27 @@
-import getRandomNumber from '../utils';
-import startGame from '../game-service';
+import { cons } from 'hexlet-pairs';
+import startGame from '..';
+
+const math = require('mathjs');
+
+const getRandomNumber = () => math.randomInt(1, 100);
 
 const getRandomOperator = () => {
   const OPERATORS = ['+', '-', '*'];
   return OPERATORS[Math.floor(Math.random() * OPERATORS.length)];
 };
 
-const getCorrectAnswer = (x, y, op) => {
-  if (op === '+') return x + y;
-  if (op === '-') return x - y;
-  if (op === '*') return x * y;
-  console.log(`Error: no operation ${op} was found!`);
-  return null;
+const evalCalc = expr => math.eval(expr);
+
+const questionFunc = () => {
+  const x = getRandomNumber();
+  const y = getRandomNumber();
+  const op = getRandomOperator();
+  return `${x} ${op} ${y}`;
 };
 
-const game = (numberOfRounds) => {
+const game = () => {
   const description = 'What is the result of the expression?';
-  const objectives = [];
-  let i = 0;
-  while (i < numberOfRounds) {
-    const x = getRandomNumber();
-    const y = getRandomNumber();
-    const op = getRandomOperator();
-
-    const obj = new Map();
-    obj.set('question', `${x} ${op} ${y}`);
-    obj.set('correct', getCorrectAnswer(x, y, op).toString());
-
-    objectives.push(obj);
-    i += 1;
-  }
-
-  startGame(description, objectives);
+  startGame(description, cons(questionFunc, evalCalc));
 };
 
 export default game;

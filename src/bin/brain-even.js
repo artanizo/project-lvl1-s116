@@ -2,4 +2,4 @@
 
 import game from '../games/even-game';
 
-game(3);
+game();

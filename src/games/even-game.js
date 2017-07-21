@@ -1,5 +1,9 @@
-import getRandomNumber from '../utils';
-import startGame from '../game-service';
+import { cons } from 'hexlet-pairs';
+import startGame from '..';
+
+const math = require('mathjs');
+
+const getRandomNumber = () => math.randomInt(1, 100);
 
 const getCorrectAnswer = (number) => {
   if (number % 2 === 0) {
@@ -8,24 +12,10 @@ const getCorrectAnswer = (number) => {
   return 'no';
 };
 
-const game = (numberOfRounds) => {
+const game = () => {
   const description = 'Answer "yes" if number even otherwise answer "no".';
 
-  const objectives = [];
-
-  let i = 0;
-  while (i < numberOfRounds) {
-    const random = getRandomNumber();
-
-    const obj = new Map();
-    obj.set('question', random);
-    obj.set('correct', getCorrectAnswer(random));
-
-    objectives.push(obj);
-    i += 1;
-  }
-
-  startGame(description, objectives);
+  startGame(description, cons(getRandomNumber, getCorrectAnswer));
 };
 
 export default game;

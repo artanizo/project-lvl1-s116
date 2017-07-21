@@ -2,5 +2,5 @@
 
 import game from '../games/calc-game';
 
-game(3);
+game();
 
