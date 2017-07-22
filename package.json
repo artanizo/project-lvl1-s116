@@ -1,6 +1,6 @@
 {
   "name": "brain-games-fomina",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "brain-games",
   "main": "index.js",
   "scripts": {

@@ -1,5 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import startGame from '..';
+import getRandomNumber from '../get-random-number';
 
 const getCorrectAnswer = (number) => {
   if (number % 2 === 0) {
@@ -9,7 +10,7 @@ const getCorrectAnswer = (number) => {
 };
 
 const generateData = () => {
-  const number = Math.floor((Math.random() * 100) + 1);
+  const number = getRandomNumber(1, 100);
   const answer = getCorrectAnswer(number);
   return cons(number, answer);
 };

@@ -1,7 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import startGame from '..';
-
-const getRandomNumber = (min, max) => Math.floor((Math.random() * ((max - min) + 1)) + min);
+import getRandomNumber from '../get-random-number';
 
 const getCorrectAnswer = (x, y) => {
   if (!y) return x;
