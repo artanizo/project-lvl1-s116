@@ -1,6 +1,6 @@
 {
   "name": "brain-games-fomina",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "brain-games",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
   "license": "ISC",
   "dependencies": {
     "hexlet-pairs": "*",
-    "mathjs": "^3.14.2",
     "readline-sync": "*"
   },
   "devDependencies": {

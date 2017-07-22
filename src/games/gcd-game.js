@@ -1,25 +1,23 @@
 import { cons } from 'hexlet-pairs';
 import startGame from '..';
 
-const math = require('mathjs');
+const getRandomNumber = (min, max) => Math.floor((Math.random() * ((max - min) + 1)) + min);
 
-
-const getRandomNumber = () => math.randomInt(1, 100);
-
-const calcGcd = (expr) => {
-  const arr = expr.split(' ');
-  return math.gcd(arr[0], arr[1]);
+const getCorrectAnswer = (x, y) => {
+  if (!y) return x;
+  return getCorrectAnswer(y, x % y);
 };
 
-const questionFunc = () => {
-  const x = getRandomNumber();
-  const y = getRandomNumber();
-  return `${x} ${y}`;
+const generateData = () => {
+  const x = getRandomNumber(1, 100);
+  const y = getRandomNumber(1, 100);
+  const answer = getCorrectAnswer(x, y);
+  return cons(`${x} ${y}`, answer);
 };
 
 const game = () => {
   const description = 'Find the greatest common divisor of given numbers.';
-  startGame(description, cons(questionFunc, calcGcd));
+  startGame(description, generateData);
 };
 
 export default game;

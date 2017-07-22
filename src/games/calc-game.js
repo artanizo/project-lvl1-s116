@@ -1,27 +1,30 @@
 import { cons } from 'hexlet-pairs';
 import startGame from '..';
 
-const math = require('mathjs');
-
-const getRandomNumber = () => math.randomInt(1, 100);
+const getRandomNumber = (min, max) => Math.floor((Math.random() * ((max - min) + 1)) + min);
 
 const getRandomOperator = () => {
   const OPERATORS = ['+', '-', '*'];
   return OPERATORS[Math.floor(Math.random() * OPERATORS.length)];
 };
 
-const evalCalc = expr => math.eval(expr);
+const getCorrectAnswer = (x, y, op) => {
+  if (op === '+') return x + y;
+  if (op === '-') return x - y;
+  return x * y;
+};
 
-const questionFunc = () => {
-  const x = getRandomNumber();
-  const y = getRandomNumber();
+const generateData = () => {
+  const x = getRandomNumber(1, 100);
+  const y = getRandomNumber(1, 100);
   const op = getRandomOperator();
-  return `${x} ${op} ${y}`;
+  const answer = getCorrectAnswer(x, y, op);
+  return cons(`${x} ${op} ${y}`, answer);
 };
 
 const game = () => {
   const description = 'What is the result of the expression?';
-  startGame(description, cons(questionFunc, evalCalc));
+  startGame(description, generateData);
 };
 
 export default game;

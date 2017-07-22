@@ -1,9 +1,7 @@
 import { cons } from 'hexlet-pairs';
 import startGame from '..';
 
-const math = require('mathjs');
-
-const getRandomNumber = () => math.randomInt(10, 1000);
+const getRandomNumber = (min, max) => Math.floor((Math.random() * ((max - min) + 1)) + min);
 
 const getMin = arr => Math.min(...arr);
 
@@ -37,9 +35,15 @@ const getBalancedNumber = (number) => {
   return result.join('');
 };
 
+const generateData = () => {
+  const number = getRandomNumber(10, 1000);
+  const answer = getBalancedNumber(number);
+  return cons(number, answer);
+};
+
 const game = () => {
   const description = 'Balance the given number.';
-  startGame(description, cons(getRandomNumber, getBalancedNumber));
+  startGame(description, generateData);
 };
 
 export default game;
