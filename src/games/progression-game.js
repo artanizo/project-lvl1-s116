@@ -4,7 +4,7 @@ import getRandomNumber from '../get-random-number';
 
 const getProgressionMember = (startNumber, step, index) => startNumber + ((index - 1) * step);
 
-const generateData = () => {
+const getRiddleData = () => {
   const startPoint = getRandomNumber(0, 20);
   const step = getRandomNumber(1, 20);
   const progressionLength = 10;
@@ -25,7 +25,7 @@ const generateData = () => {
 
 const game = () => {
   const description = 'What number is missing in this progression?';
-  startGame(description, generateData);
+  startGame(description, getRiddleData);
 };
 
 export default game;

@@ -13,7 +13,7 @@ const getCorrectAnswer = (x, y, op) => {
   return x * y;
 };
 
-const generateData = () => {
+const getRiddleData = () => {
   const x = getRandomNumber(1, 100);
   const y = getRandomNumber(1, 100);
   const op = getRandomOperator();
@@ -23,7 +23,7 @@ const generateData = () => {
 
 const game = () => {
   const description = 'What is the result of the expression?';
-  startGame(description, generateData);
+  startGame(description, getRiddleData);
 };
 
 export default game;

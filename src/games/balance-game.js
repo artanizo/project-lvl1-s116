@@ -34,7 +34,7 @@ const getBalancedNumber = (number) => {
   return result.join('');
 };
 
-const generateData = () => {
+const getRiddleData = () => {
   const number = getRandomNumber(10, 1000);
   const answer = getBalancedNumber(number);
   return cons(number, answer);
@@ -42,7 +42,7 @@ const generateData = () => {
 
 const game = () => {
   const description = 'Balance the given number.';
-  startGame(description, generateData);
+  startGame(description, getRiddleData);
 };
 
 export default game;

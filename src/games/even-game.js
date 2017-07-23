@@ -2,23 +2,23 @@ import { cons } from 'hexlet-pairs';
 import startGame from '..';
 import getRandomNumber from '../get-random-number';
 
-const getCorrectAnswer = (number) => {
+const isNumberEven = (number) => {
   if (number % 2 === 0) {
-    return 'yes';
+    return true;
   }
-  return 'no';
+  return false;
 };
 
-const generateData = () => {
+const getRiddleData = () => {
   const number = getRandomNumber(1, 100);
-  const answer = getCorrectAnswer(number);
+  const answer = isNumberEven(number) ? 'yes' : 'no';
   return cons(number, answer);
 };
 
 const game = () => {
   const description = 'Answer "yes" if number even otherwise answer "no".';
 
-  startGame(description, generateData);
+  startGame(description, getRiddleData);
 };
 
 export default game;
