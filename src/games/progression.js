@@ -20,7 +20,7 @@ const getRiddleData = () => {
       question += ` ${getProgressionMember(startPoint, step, i)}`;
     }
   }
-  return cons(question, answer);
+  return cons(question, answer.toString());
 };
 
 const game = () => {

@@ -18,7 +18,7 @@ const getRiddleData = () => {
   const y = getRandomNumber(1, 100);
   const op = getRandomOperator();
   const answer = getCorrectAnswer(x, y, op);
-  return cons(`${x} ${op} ${y}`, answer);
+  return cons(`${x} ${op} ${y}`, answer.toString());
 };
 
 const game = () => {

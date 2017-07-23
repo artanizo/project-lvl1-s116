@@ -12,7 +12,7 @@ const isNumberEven = (number) => {
 const getRiddleData = () => {
   const number = getRandomNumber(1, 100);
   const answer = isNumberEven(number) ? 'yes' : 'no';
-  return cons(number, answer);
+  return cons(number, answer.toString());
 };
 
 const game = () => {

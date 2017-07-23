@@ -11,7 +11,7 @@ const getRiddleData = () => {
   const x = getRandomNumber(1, 100);
   const y = getRandomNumber(1, 100);
   const answer = calcGcd(x, y);
-  return cons(`${x} ${y}`, answer);
+  return cons(`${x} ${y}`, answer.toString());
 };
 
 const game = () => {

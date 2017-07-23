@@ -18,7 +18,7 @@ const game = (description, genFunc) => {
     const data = genFunc();
 
     const currentQuestion = car(data);
-    const currentCorrect = cdr(data).toString();
+    const currentCorrect = cdr(data);
 
     console.log(`Question: ${currentQuestion}`);
     const playerAnswer = getPlayerAnswer();
